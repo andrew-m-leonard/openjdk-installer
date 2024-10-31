@@ -12,7 +12,7 @@ s390x       s390x       s390x       only for jdk8+
 riscv64     riscv64     riscv64     only for JDK17+
 */
 
-env.NODE_LABEL = 'dockerBuild&&linux&&x64' // Default node and also used for build RedHat + Suse + Debian x64
+env.NODE_LABEL = 'worker' // Default node and also used for build RedHat + Suse + Debian x64
 env.PRODUCT = 'temurin'
 
 class Types {
@@ -213,7 +213,7 @@ def CheckAndUpload(String Target, String Distro, String BuildArch, String Versio
 
 // RISC-V Upload Function
 def handleRISCVUpload(String Distro, String BuildArch, String Version, String DistroList, String Value, String PackageDir, String Key ) {
-    node("dockerBuild&&linux&&x64") {
+    node("worker") {
       tool name: 'jfrog-cli', type: 'jfrog'
 
       env.DISTRO = Distro
