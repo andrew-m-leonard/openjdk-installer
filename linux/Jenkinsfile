@@ -54,7 +54,7 @@ pipeline {
                 script {
                     currentBuild.displayName = Types.displayName(TYPE, VERSION, ARCH, DISTRO)
                     currentBuild.description = env.BUILD_USER_ID
-                    sh('docker --version')
+                    //sh('docker --version')
                 }
                 checkout(
                     [
